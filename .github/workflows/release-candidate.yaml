@@ -23,16 +23,12 @@ jobs:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      - name: Version Name
-        shell: bash
-        env:
-          REF: ${{ github.ref_name }}
-        run: |
-          export VERSION_NAME="${REF/release\//}"
+      - name: Inject slug/short variables
+        uses: rlespinasse/github-slug-action@v4
       - name: Build and Push Docker Image
         uses: docker/build-push-action@v2
         with:
           push: true
           platforms: linux/amd64,linux/arm64
           tags: |
-            ghcr.io/${{ github.repository }}:rc-${{ env.VERSION_NAME }}
+            ghcr.io/${{ github.repository }}:rc-${{ env.GITHUB_REF_NAME }}
