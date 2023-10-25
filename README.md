@@ -17,6 +17,16 @@ It contains the following Tools to further support the development and release o
 Used as helpers to gather files and analyze them: `curl`, `wget`, `openssh-client`, `git`, `jq`  
 Provide insights and format test results: `openjdk-17-jre`, `sqlite`
 
+## Versions
+Buildbox versioning correlates to a Swift Version. 
+
+| Version | Swift Version |
+|---------|---------------|
+| 1.0     | 5.7.0         |
+| 1.1     | 5.9.1         |
+
+
+
 ## Contribution
 
 In the interest of fostering an open and welcoming environment, we as contributors and
