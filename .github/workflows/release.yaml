@@ -5,7 +5,7 @@ on:
 
 jobs:
   build:
-    name: Build 
+    name: Build
     runs-on: ubuntu-latest
     permissions:
       packages: write
@@ -27,12 +27,22 @@ jobs:
         uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
         with:
           images: ghcr.io/${{ github.repository }}
-      - name: Build and Push Docker Image
+      - name: Buildbox Build and Push Docker Image
         uses: docker/build-push-action@v2
         with:
-          push: true 
+          push: true
           platforms: linux/amd64,linux/arm64
+          file: buildbox.dockerfile
           tags: |
-            ghcr.io/${{ github.repository }}:latest
+            ghcr.io/${{ github.repository_owner }}/buildbox:latest
             ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+      - name: E2E Runner Build and Push Docker Image
+        uses: docker/build-push-action@v2
+        with:
+          push: true
+          platforms: linux/amd64,linux/arm64
+          file: e2e.dockerfile
+          tags: |
+            ghcr.io/${{ github.repository_owner }}/e2e-runner:latest
+            ghcr.io/${{ github.repository_owner }}/e2e-runner:${{ steps.meta.outputs.version }}
