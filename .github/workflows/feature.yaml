@@ -40,7 +40,7 @@ jobs:
           platforms: linux/amd64,linux/arm64
           file: e2e.dockerfile
           tags: |
-            ghcr.io/${{ github.repository_owner }}/e22-runner:${{ env.GITHUB_REF_SLUG }}
+            ghcr.io/${{ github.repository_owner }}/e2e-runner:${{ env.GITHUB_REF_SLUG }}
       - name: List Docker images
         shell: bash
         run: |
