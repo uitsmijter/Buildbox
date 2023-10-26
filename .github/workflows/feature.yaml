@@ -1,4 +1,4 @@
-name: Build Buildbox
+name: Feature
 on:
   push:
     branches:

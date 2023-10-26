@@ -1,4 +1,4 @@
-name: Build Buildbox
+name: Build Nightly
 on:
   push:
     branches:

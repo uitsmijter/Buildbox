@@ -1,4 +1,4 @@
-name: Pull request
+name: Pull Request Notify
 on:
   pull_request:
     types:
