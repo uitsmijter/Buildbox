@@ -25,10 +25,11 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: Inject slug/short variables
         uses: rlespinasse/github-slug-action@4.4.1
-      - name: Build and Push Docker Image
+      - name: Buildbox Build and Push Docker Image
         uses: docker/build-push-action@v2
         with:
           push: true
           platforms: linux/amd64,linux/arm64
+          file: Buildbox.dockerfile
           tags: |
             ghcr.io/${{ github.repository }}:rc-${{ env.GITHUB_REF_SLUG }}
