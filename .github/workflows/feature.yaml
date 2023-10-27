@@ -1,8 +1,8 @@
-name: Release Candidate
+name: Feature
 on:
   push:
     branches:
-      - release/*
+      - feature/*
 
 jobs:
   build:
@@ -28,16 +28,21 @@ jobs:
       - name: Buildbox Build and Push Docker Image
         uses: docker/build-push-action@v2
         with:
-          push: true
+          push: false
           platforms: linux/amd64,linux/arm64
           file: buildbox.dockerfile
           tags: |
-            ghcr.io/${{ github.repository_owner }}/buildbox:rc-${{ env.GITHUB_REF_SLUG }}
+            ghcr.io/${{ github.repository_owner }}/buildbox:${{ env.GITHUB_REF_SLUG }}
       - name: E2E Runner Build and Push Docker Image
         uses: docker/build-push-action@v2
         with:
-          push: true
+          push: false
           platforms: linux/amd64,linux/arm64
           file: e2e.dockerfile
           tags: |
-            ghcr.io/${{ github.repository_owner }}/e2e-runner:rc-${{ env.GITHUB_REF_SLUG }}
+            ghcr.io/${{ github.repository_owner }}/e2e-runner:${{ env.GITHUB_REF_SLUG }}
+      - name: List Docker images
+        shell: bash
+        run: |
+          docker images 
+

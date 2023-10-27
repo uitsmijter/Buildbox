@@ -1,4 +1,4 @@
-name: Build Buildbox
+name: Build Nightly
 on:
   push:
     branches:
@@ -6,7 +6,7 @@ on:
 
 jobs:
   build:
-    name: Build 
+    name: Build
     runs-on: ubuntu-latest
     permissions:
       packages: write
@@ -23,10 +23,19 @@ jobs:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      - name: Build and Push Docker Image
+      - name: Buildbox Build and Push Docker Image
         uses: docker/build-push-action@v2
         with:
           push: true
           platforms: linux/amd64,linux/arm64
+          file: buildbox.dockerfile
           tags: |
-            ghcr.io/${{ github.repository }}:nightly
+            ghcr.io/${{ github.repository_owner }}/buildbox:nightly
+      - name: E2E Runner Build and Push Docker Image
+        uses: docker/build-push-action@v2
+        with:
+          push: true
+          platforms: linux/amd64,linux/arm64
+          file: e2e.dockerfile
+          tags: |
+            ghcr.io/${{ github.repository_owner }}/e2e-runner:nightly
