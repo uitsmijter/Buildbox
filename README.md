@@ -1,12 +1,26 @@
 # Uitsmijter Buildbox
 
-Swift based build environment for Uitsmijter
+**build and test environment for Uitsmijter**
+
+This repository contains docker images to build and 
+test [Uitsmijter](https://github.com/uitsmijter/Uitsmijter). Images are public available and 
+used in the [Uitsmijter Toolchain](https://docs.uitsmijter.io/contribution/tooling/).
 
 ## Overview
 
-The resulting container contains all tools needed to run Uitsmijters unit tests.
+The resulting container contains all tools needed to build Uitsmijters incremental run unit tests.
+
 As it is based on the official [Swift Docker image](https://hub.docker.com/_/swift) it supports all tools needed for swift development out of the box.
 Additional tools are listed in [Usage](#Usage).
+
+A second container contains all tools that are needed to run the End-To-End-tests.
+
+## Images
+
+| Image      | Location                             |
+|------------|--------------------------------------|
+| Buildbox   | ghcr.io/uitsmijter/buildbox:latest   |
+| e2e-runner | ghcr.io/uitsmijter/e2e-runner:latest |
 
 ## Usage
 
@@ -17,6 +31,12 @@ It contains the following Tools to further support the development and release o
 Used as helpers to gather files and analyze them: `curl`, `wget`, `openssh-client`, `git`, `jq`  
 Provide insights and format test results: `openjdk-17-jre`, `sqlite`
 
+Pull images: 
+```shell
+$ docker pull ghcr.io/uitsmijter/buildbox:latest
+$ docker pull ghcr.io/uitsmijter/e2e-runner:latest
+```
+
 ## Versions
 Buildbox versioning correlates to a Swift Version. 
 
@@ -24,8 +44,7 @@ Buildbox versioning correlates to a Swift Version.
 |---------|---------------|
 | 1.0     | 5.7.0         |
 | 1.1     | 5.9.1         |
-
-
+| 2.0     | 5.9.1         |
 
 ## Contribution
 
