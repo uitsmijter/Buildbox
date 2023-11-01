@@ -40,11 +40,12 @@ $ docker pull ghcr.io/uitsmijter/e2e-runner:latest
 ## Versions
 Buildbox versioning correlates to a Swift Version. 
 
-| Version | Swift Version |
-|---------|---------------|
-| 1.0     | 5.7.0         |
-| 1.1     | 5.9.1         |
-| 2.0     | 5.9.1         |
+| Version | Swift Version | Playwright Version  |
+|---------|---------------|---------------------|
+| 1.0     | 5.7.0         | -                   |
+| 1.1     | 5.9.1         | -                   |
+| 2.0     | 5.9.1         | 1.38.1              |
+| 2.1     | 5.9.1         | 1.39.0              |
 
 ## Contribution
 

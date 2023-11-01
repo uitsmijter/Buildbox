@@ -23,17 +23,16 @@ RUN apt install -y \
 COPY --from=kubectl /opt/bitnami/kubectl/bin/kubectl /usr/bin/kubectl
 RUN curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
 
-# Install dependencies
-RUN yarn global add playwright; \
-    npx playwright install-deps
-
-# Rename the node user and group to uitsmijter
-RUN usermod -l uitsmijter node && groupmod -n uitsmijter node
-
-# Ensure all further commands run as the uitsmijter user
-USER uitsmijter:uitsmijter
-
 WORKDIR /tests
+#ADD src/package.json .
+
+# Tests have to modify root data
+USER root
+
+# Install dependencies
+RUN yarn global add playwright@1.39.0; \
+    npx playwright install-deps; \
+    npx playwright install
 
 ENTRYPOINT [ ]
 CMD [ "bash" ]

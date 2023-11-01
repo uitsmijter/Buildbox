@@ -1,7 +1,7 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 echo ""
-echo "Uitsmijter Buildbox 2.0.1 | Swift 5.9.1"
+echo "Uitsmijter Buildbox 2.1.0 | Swift 5.9.1"
 echo "------------------------------------------------------------"
 echo "Visit: https://docs.uitsmijter.io"
 echo ""

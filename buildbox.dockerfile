@@ -25,7 +25,7 @@ RUN apt update -q \
     && apt clean \
     && rm -rf /var/lib/apt/lists/*; rm -rf /var/cache/apt/*
 
-ADD entrypoint.sh /entrypoint.sh
+ADD src/entrypoint.sh /entrypoint.sh
 
 # Set up a build area
 WORKDIR /build
