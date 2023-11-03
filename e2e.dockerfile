@@ -31,6 +31,7 @@ USER root
 
 # Install dependencies
 RUN yarn global add playwright@1.39.0; \
+    yarn global add @playwright/test@1.39.0 \
     npx playwright install-deps; \
     npx playwright install
 
