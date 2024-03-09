@@ -26,7 +26,7 @@ jobs:
       - name: Inject slug/short variables
         uses: rlespinasse/github-slug-action@4.4.1
       - name: Buildbox Build and Push Docker Image
-        uses: docker/build-push-action@v2
+        uses: docker/build-push-action@v5
         with:
           push: true
           platforms: linux/amd64,linux/arm64
@@ -34,7 +34,7 @@ jobs:
           tags: |
             ghcr.io/${{ github.repository_owner }}/buildbox:rc-${{ env.GITHUB_REF_SLUG }}
       - name: E2E Runner Build and Push Docker Image
-        uses: docker/build-push-action@v2
+        uses: docker/build-push-action@v5
         with:
           push: true
           platforms: linux/amd64,linux/arm64

@@ -30,8 +30,8 @@ WORKDIR /tests
 USER root
 
 # Install dependencies
-RUN yarn global add playwright@1.39.0; \
-    yarn global add @playwright/test@1.39.0; \
+ RUN yarn global add playwright@1.42.1; \
+     yarn global add @playwright/test@1.42.1; \
     npx playwright install-deps; \
     npx playwright install
 
