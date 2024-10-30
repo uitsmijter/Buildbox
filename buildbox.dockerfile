@@ -1,7 +1,7 @@
 # ----------------------------------------------------------------------------------------
 # Uitsmijter Swift Buildbox
 # ----------------------------------------------------------------------------------------
-ARG BASEIMAGE=swift:5.9.2-jammy
+ARG BASEIMAGE=swift:6.0.2-noble
 
 FROM ${BASEIMAGE} as build
 LABEL maintainer="aus der Technik"
