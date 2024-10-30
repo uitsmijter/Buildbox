@@ -36,7 +36,7 @@ jobs:
       - name: E2E Runner Build and Push Docker Image
         uses: docker/build-push-action@v5
         with:
-          push: false
+          push: true
           platforms: linux/amd64,linux/arm64
           file: e2e.dockerfile
           tags: |
