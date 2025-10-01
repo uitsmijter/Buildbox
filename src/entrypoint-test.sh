@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 echo ""
-echo "Uitsmijter TestRunner 2.4.0 | Swift 5.10.1"
+echo "Uitsmijter TestRunner 3.0.0 | Swift 6.0.2"
 echo "------------------------------------------------------------"
 echo "Visit: https://docs.uitsmijter.io"
 echo ""
