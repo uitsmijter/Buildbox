@@ -23,6 +23,9 @@ jobs:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Get Short SHA
+        id: get_short_sha
+        run: echo "SHORT_SHA=$(echo $GITHUB_SHA | cut -c1-7)" >> $GITHUB_ENV
       - name: Buildbox Build and Push Docker Image
         uses: docker/build-push-action@v5
         with:
@@ -31,6 +34,7 @@ jobs:
           file: buildbox.dockerfile
           tags: |
             ghcr.io/${{ github.repository_owner }}/buildbox:nightly
+          build-args: "VERSION=\"nightly-$SHORT_SHA\""
       - name: E2E Runner Build and Push Docker Image
         uses: docker/build-push-action@v5
         with:
@@ -39,3 +43,4 @@ jobs:
           file: e2e.dockerfile
           tags: |
             ghcr.io/${{ github.repository_owner }}/e2e-runner:nightly
+          build-args: "VERSION=\"nightly-$SHORT_SHA\""

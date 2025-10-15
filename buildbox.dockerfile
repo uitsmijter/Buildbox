@@ -2,6 +2,7 @@
 # Uitsmijter Swift Buildbox
 # ----------------------------------------------------------------------------------------
 ARG BASEIMAGE=swift:6.2.0-noble
+ARG VERSION=0.0.0
 
 FROM ${BASEIMAGE} as build
 LABEL maintainer="aus der Technik"
@@ -26,6 +27,7 @@ RUN apt update -q \
     && rm -rf /var/lib/apt/lists/*; rm -rf /var/cache/apt/*
 
 ADD src/entrypoint-build.sh /entrypoint.sh
+RUN sed -i 's/<VERSION>/${VERSION}/g' /entrypoint.sh
 
 # Set up a build area
 WORKDIR /build

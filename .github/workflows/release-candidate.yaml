@@ -33,6 +33,7 @@ jobs:
           file: buildbox.dockerfile
           tags: |
             ghcr.io/${{ github.repository_owner }}/buildbox:rc-${{ env.GITHUB_REF_SLUG }}
+          build-args: "VERSION=\"rc-${{ env.GITHUB_REF_SLUG }}\""
       - name: E2E Runner Build and Push Docker Image
         uses: docker/build-push-action@v5
         with:
@@ -41,3 +42,4 @@ jobs:
           file: e2e.dockerfile
           tags: |
             ghcr.io/${{ github.repository_owner }}/e2e-runner:rc-${{ env.GITHUB_REF_SLUG }}
+          build-args: "VERSION=\"rc-${{ env.GITHUB_REF_SLUG }}\""

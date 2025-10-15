@@ -50,5 +50,7 @@ USER root
     npx playwright install
 
 ADD src/entrypoint-test.sh /entrypoint.sh
+RUN sed -i 's/<VERSION>/${VERSION}/g' /entrypoint.sh
+
 ENTRYPOINT ["/entrypoint.sh"]
 CMD [ "bash" ]
