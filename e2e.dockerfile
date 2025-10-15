@@ -21,7 +21,7 @@ RUN curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/s
 # E2E TEST RUNTIME
 # ----------------------------------------------------------------------------------------
 FROM node:20-bullseye
-
+ARG VERSION=0.0.0
 LABEL maintainer="aus der Technik"
 LABEL Description="Uitsmijter e2e"
 
@@ -50,5 +50,7 @@ USER root
     npx playwright install
 
 ADD src/entrypoint-test.sh /entrypoint.sh
+RUN sed -i 's/<VERSION>/${VERSION}/g' /entrypoint.sh
+
 ENTRYPOINT ["/entrypoint.sh"]
 CMD [ "bash" ]
