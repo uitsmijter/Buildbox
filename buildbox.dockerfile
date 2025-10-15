@@ -15,13 +15,13 @@ RUN apt update -q \
     && apt dist-upgrade -q -y \
     && apt install -y apt-utils apt-transport-https \
     && apt install -y \
-       libz-dev \
+       zlib1g-dev \
        curl libcurl4-openssl-dev wget \
        gnupg openssh-client \
        git jq \
        openjdk-17-jre \
-       libjavascriptcoregtk-4.0-dev \
-       sqlite \
+       libjavascriptcoregtk-4.1-dev \
+       sqlite3 \
     && apt-get autoremove \
     && apt clean \
     && rm -rf /var/lib/apt/lists/*; rm -rf /var/cache/apt/*
