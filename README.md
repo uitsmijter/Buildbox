@@ -52,6 +52,7 @@ Buildbox versioning correlates to a Swift Version and a Playwright Version.
 | **2.4** | 5.10.1        | 1.42.1             |
 | **3.0** | 6.0.2         | 1.42.1             |
 | **4.0** | 6.2.0         | 1.42.1             |
+| **4.1** | 6.2.0         | 1.42.1             |
 
 ## Support
 For help with the toolchain please visit our [discourse](https://discourse.uitsmijter.io) server.
