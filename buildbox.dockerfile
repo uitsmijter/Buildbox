@@ -26,6 +26,11 @@ RUN apt update -q \
     && apt clean \
     && rm -rf /var/lib/apt/lists/*; rm -rf /var/cache/apt/*
 
+# libjavascriptcoregtk compapilitiy layer
+RUN ln -sf /usr/include/webkitgtk-4.1 /usr/include/webkitgtk-4.0
+RUN ln -sf /usr/lib/aarch64-linux-gnu/libjavascriptcoregtk-4.1.so /usr/lib/aarch64-linux-gnu/libjavascriptcoregtk-4.0.so 2>/dev/null || true
+RUN ln -sf /usr/lib/x86_64-linux-gnu/libjavascriptcoregtk-4.1.so /usr/lib/x86_64-linux-gnu/libjavascriptcoregtk-4.0.so 2>/dev/null || true
+
 ADD src/entrypoint-build.sh /entrypoint.sh
 RUN sed -i "s/<VERSION>/${VERSION}/g" /entrypoint.sh
 
